@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Michael Deering"]
   s.email       = ["mdeering@mdeering.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Collection of RSpec matchers for verbose testers.}
+  s.description = %q{A supplement of missing matchers for the shoulda collection for those who really like to test everything including the framework.}
 
   s.rubyforge_project = "phillumeny"
 
