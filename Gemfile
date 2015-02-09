@@ -1,4 +1,12 @@
 source "http://rubygems.org"
 
-# Specify your gem's dependencies in phillumeny.gemspec
+gem 'activemodel'
+
+gem 'pry'
+gem 'pry-rescue'
+
+group :test do
+  gem 'factory_girl', require: false
+end
+
 gemspec
