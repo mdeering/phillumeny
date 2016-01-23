@@ -8,7 +8,7 @@ module Namespace
     attr_accessor :username
 
     validates :username,
-      presence: true
+              presence: true
 
   end
 end

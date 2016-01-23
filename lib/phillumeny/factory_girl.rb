@@ -1,10 +1,17 @@
 module Phillumeny
+
+  # Matchers for supporting the validation of factories along with their
+  # traits and build strategies
   module FactoryGirl
 
+    # rubocop:disable PredicateName
     def have_a_valid_factory(name = nil)
       HaveAValidFactory.new(name)
     end
+    # rubocop:enable PredicateName
 
+    # it { should_not have_a_valid_factory }
+    # it { should have_a_valid_factory.with_trait(:valid) }
     class HaveAValidFactory
 
       def description
@@ -42,4 +49,3 @@ module Phillumeny
 
   end
 end
-
