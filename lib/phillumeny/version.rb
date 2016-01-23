@@ -5,9 +5,10 @@ module Phillumeny
   module Version
 
     MAJOR      = 0
-    MINOR      = 1
-    PATCH      = 0
-    PRERELEASE = 'alpha'.freeze
+    MINOR      = 0
+    PATCH      = 1
+    PRERELEASE = nil
+    # PRERELEASE = 'alpha'.freeze
     BUILD      = 0
 
     def self.to_s
