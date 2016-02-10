@@ -43,8 +43,12 @@ module Phillumeny
             self
           end
 
+          def description
+            "route actions: #{@actions.keys}"
+          end
+
           def except(*actions_to_remove)
-            @actions = @actions.except(*actions_to_remove)
+            @actions = @actions.except(*actions_to_remove.map(&:to_s))
             self
           end
 
@@ -53,14 +57,16 @@ module Phillumeny
           end
 
           def matches?(subject)
-            @actions.each do |action, http_method|
+            @actions.all? do |action, http_method|
               extra_params = {}
               extra_params = {}.merge(@param => @param) if ['destroy', 'edit', 'show', 'update'].include?(action)
               # https://github.com/rspec/rspec-rails/blob/master/lib/rspec/rails/matchers/routing_matchers.rb#L27-L31
-              @scope.assert_recognizes(
-                { controller: controller_name, action: action }.merge(extra_params),
-                { method: http_method, path: path_for_action(action) }
-              )
+              match_unless_raises Minitest::Assertion, ActionController::RoutingError do
+                @scope.assert_recognizes(
+                  { controller: controller_name, action: action }.merge(extra_params),
+                  { method: http_method, path: path_for_action(action) }
+                )
+              end
             end
           end
 
@@ -70,12 +76,12 @@ module Phillumeny
           end
 
           def only(*limited_actions)
-            @actions.slice!(*limited_actions)
+            @actions.slice!(*limited_actions.map(&:to_s))
             self
           end
 
           def param(parameter)
-            @param = parameter
+            @param = parameter.to_s
             self
           end
 
@@ -91,7 +97,7 @@ module Phillumeny
           end
 
           def path_for_action(action)
-            "#{"#{@namespace}/" if @namespace}/#{@path}#{"/#{@param}" if ['destroy', 'edit', 'show', 'update'].include?(action)}#{"/#{action}" if ['edit', 'new'].include?(action)}"
+            "#{"#{@namespace}/" if @namespace}#{@path}#{"/#{@param}" if ['destroy', 'edit', 'show', 'update'].include?(action)}#{"/#{action}" if ['edit', 'new'].include?(action)}"
           end
 
         end
