@@ -8,6 +8,19 @@ require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new
 
-task default: [:spec, :rubocop]
+task default: [:setup, :spec, :rubocop]
 
-# rails new tmp/dummy --skip-bundle --skip-active-record --skip-spring --skip-gemfile --skip-test-unit --skip-turbo-links --no-rc
+desc 'Create the rails application to run our matcher tests wihin/against'
+task :setup do
+  arguments = []
+  arguments << '--force'
+  arguments << '--no-rc'
+  arguments << '--skip-active-record'
+  arguments << '--skip-bundle'
+  arguments << '--skip-gemfile'
+  arguments << '--skip-spring'
+  arguments << '--skip-test-unit'
+  arguments << '--skip-turbo-links'
+  arguments << '--template=./spec/support/rails/rspec.template'
+  puts `rails new tmp/dummy #{arguments.join(' ')}`
+end

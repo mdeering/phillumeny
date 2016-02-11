@@ -72,8 +72,6 @@ module Phillumeny
               extra_params = {}.merge(@param => @param) if @member_actions.include?(action)
               # https://github.com/rspec/rspec-rails/blob/master/lib/rspec/rails/matchers/routing_matchers.rb#L27-L31
               match_unless_raises Minitest::Assertion, ActionController::RoutingError do
-                puts "#{{ controller: controller_name, action: action }.merge(extra_params)}"
-                puts "#{{ method: @action_http_method_map[action], path: path_for_action(action) }}"
                 @scope.assert_recognizes(
                   { controller: controller_name, action: action }.merge(extra_params),
                   { method: @action_http_method_map[action], path: path_for_action(action) }

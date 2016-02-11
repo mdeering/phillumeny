@@ -1,0 +1,31 @@
+routes = <<-ROUTES
+resources :posts, path: '/blog', param: :slug, only: [:show]
+
+namespace :admin do
+  resources :comments do
+    member do
+      put 'approve'
+    end
+    put 'spam', on: :member
+  end
+  resources :posts, except: [:show]
+end
+ROUTES
+
+route routes
+
+file 'app/controllers/posts_controller.rb', <<-CODE
+class PostsController < ApplicationController
+end
+CODE
+
+
+file 'app/controllers/admin/comments_controller.rb', <<-CODE
+class Admin::CommentsController < ApplicationController
+end
+CODE
+
+file 'app/controllers/admin/posts_controller.rb', <<-CODE
+class Admin::PostsController < ApplicationController
+end
+CODE
