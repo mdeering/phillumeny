@@ -13,3 +13,6 @@ EmptyLinesAroundModuleBody:
 
 LineLength:
   Max: 125
+
+WordArray:
+  Enabled: false
