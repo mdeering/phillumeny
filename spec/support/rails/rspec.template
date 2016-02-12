@@ -1,15 +1,16 @@
 routes = <<-ROUTES
 resources :posts, path: '/blog', param: :slug, only: [:show]
+  resources :missing_controllers
 
-namespace :admin do
-  resources :comments do
-    member do
-      put 'approve'
+  namespace :admin do
+    resources :comments do
+      member do
+        put 'approve'
+      end
+      put 'spam', on: :member
     end
-    put 'spam', on: :member
+    resources :posts, except: [:show]
   end
-  resources :posts, except: [:show]
-end
 ROUTES
 
 route routes
