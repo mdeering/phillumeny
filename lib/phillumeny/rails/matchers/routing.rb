@@ -15,11 +15,9 @@ module Phillumeny
 
         # TODO: collection action addition
         # TODO: nested resources
-        # TODO: singular resources
+        # TODO: singular resource
         # TODO: scope and namespace are the same thing? should alias and document the preferred routing convention
         # TODO: shallow resources, shallow_path
-        # TODO: Enforce the except and only calls raise on removed routes, might do this with requiring a explicit call to :all, :except, or :only to ensure explicitness
-        # TODO: Conver actions to test into a Set
         # https://github.com/rails/rails/blob/31778a34a8c6e1d186c1e807491c1f44c5f07357/actionpack/lib/action_dispatch/routing/mapper.rb#L1104-L1122
         class RouteResourcesMatcher < RSpec::Matchers::BuiltIn::BaseMatcher
 
@@ -35,6 +33,7 @@ module Phillumeny
 
           def initialize(scope, *expected)
             @controller = expected[0].to_s
+            @engine     = nil
             @namespace  = nil
             @param      = 'id'
             @path       = expected[0].to_s
@@ -55,7 +54,7 @@ module Phillumeny
             return false if actions_to_test.empty?
             actions_to_test.all? do |action|
               extra_params = {}
-              extra_params.merge!(@param.to_sym => @param) if member_actions.include?(action)
+              extra_params[@param.to_sym] = @param if member_actions.include?(action)
               # https://github.com/rspec/rspec-rails/blob/master/lib/rspec/rails/matchers/routing_matchers.rb#L27-L31
               begin
                 @scope.assert_routing(
@@ -64,7 +63,7 @@ module Phillumeny
                 )
                 error_messages << "Was able to route action: #{action}, controller: #{controller_name}, method: #{http_method_map[action]}, path: #{path_for_action(action)}"
                 false
-              rescue Minitest::Assertion => error
+              rescue Minitest::Assertion
                 true
               end
             end
@@ -72,6 +71,11 @@ module Phillumeny
 
           def description
             "route actions: #{actions_to_test.inspect}"
+          end
+
+          def engine(engine_name)
+            @engine = engine_name
+            self
           end
 
           def except(*actions_to_remove)
@@ -109,7 +113,7 @@ module Phillumeny
           def member(new_member_routes = {})
             new_member_routes.stringify_keys!
             member_actions.merge new_member_routes.keys
-            actions_to_test.merge  new_member_routes.keys
+            actions_to_test.merge new_member_routes.keys
             named_routes.merge new_member_routes.keys
             http_method_map.merge!(new_member_routes)
             self
@@ -142,7 +146,7 @@ module Phillumeny
           end
 
           def controller_name
-            "#{"#{@namespace}/" if @namespace}#{@controller}"
+            [@engine, @namespace, @controller].compact.join('/')
           end
 
           def error_messages
@@ -162,9 +166,11 @@ module Phillumeny
           end
 
           def path_for_action(action)
-            "#{"#{@namespace}/" if @namespace}#{@path}#{"/#{@param}" if @member_actions.include?(action)}#{"/#{action}" if named_routes.include?(action)}"
+            path_parts = [@namespace, @path]
+            path_parts << @param if @member_actions.include?(action)
+            path_parts << action if named_routes.include?(action)
+            path_parts.compact.join('/')
           end
-
 
         end
 
