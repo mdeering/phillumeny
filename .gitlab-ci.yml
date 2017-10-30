@@ -3,7 +3,7 @@ before_script:
   - rvm use 2.4@phillumeny --create
   - ruby -v
   - which ruby
-  - bundle install --jobs $(nproc)
+  - bundle update --jobs $(nproc)
 
 rspec:
   script:
