@@ -7,7 +7,7 @@ p. Collection of RSpec matchers for verbose testers.
 require 'phillumeny'
 
 RSpec.configure do |config|
-  config.include Phillumeny::FactoryGirl, type: :model
+  config.include Phillumeny::FactoryBot, type: :model
 end
 </code></pre>
 

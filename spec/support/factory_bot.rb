@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'factory_girl'
-FactoryGirl.find_definitions
+FactoryBot.find_definitions
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 end
