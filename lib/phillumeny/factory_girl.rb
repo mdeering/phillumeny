@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Phillumeny
 
   # Matchers for supporting the validation of factories along with their

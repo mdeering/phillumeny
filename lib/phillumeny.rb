@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'phillumeny/version'
 
 require 'phillumeny/factory_girl'
