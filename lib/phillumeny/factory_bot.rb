@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require 'factory_bot'
+
 module Phillumeny
 
   # Matchers for supporting the validation of factories along with their
   # traits and build strategies
-  module FactoryGirl
+  module FactoryBot
 
     # rubocop:disable PredicateName
     def have_a_valid_factory(name = nil)
@@ -37,7 +39,7 @@ module Phillumeny
 
       def matches?(subject)
         factory_name = @name = @name.nil? ? subject.class.to_s.underscore : @name
-        object = ::FactoryGirl.build(factory_name, @trait)
+        object = ::FactoryBot.build(factory_name, @trait)
         @error_messages = object.errors.full_messages unless object.valid?
         object.valid?
       end

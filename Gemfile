@@ -11,7 +11,7 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl', require: false
+  gem 'factory_bot', require: false
 end
 
 gemspec
