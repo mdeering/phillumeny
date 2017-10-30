@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Phillumeny
 
   # Nothing to special to see here. Doing my best to follow semantic versioning that conform
