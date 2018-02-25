@@ -19,9 +19,7 @@ module Phillumeny
     class HaveAValidFactory
 
       def description
-        msg = "have a valid factory '#{@name}'"
-        msg << " with the trait '#{@trait}'" if @trait
-        msg
+        "have a valid factory '#{@name}'#{"with the trait '#{@trait}'" if @trait}"
       end
 
       def failure_message
