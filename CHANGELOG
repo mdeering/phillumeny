@@ -1,0 +1,7 @@
+### (Unreleased)
+
+* Added validates_presence_of_any ActiveModel matcher
+
+###
+
+* Added valid_factor FactoryBot matcher
