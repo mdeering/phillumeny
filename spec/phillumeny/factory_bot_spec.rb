@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe 'FactoryGirl', type: :model do
+RSpec.describe 'FactoryBot', type: :model do
 
   describe User do
 
