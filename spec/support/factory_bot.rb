@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'factory_girl'
+require 'factory_bot'
 FactoryBot.find_definitions
 
 RSpec.configure do |config|
