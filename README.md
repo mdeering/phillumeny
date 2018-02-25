@@ -1,4 +1,5 @@
-# phillumeny
+
+![](phillumeny-logo.png)
 
 Collection of RSpec matchers for verbose testers.
 
