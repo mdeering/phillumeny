@@ -13,3 +13,6 @@ LineLength:
 PredicateName:
   Exclude:
     - lib/phillumeny/active_record.rb
+
+SymbolArray:
+  Enabled: false

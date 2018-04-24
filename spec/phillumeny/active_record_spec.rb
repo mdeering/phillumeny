@@ -4,6 +4,10 @@ require 'spec_helper'
 
 RSpec.describe Post, type: :model do
 
+  [[:include_in_sitemap, :published_at], :published_at].each do |columns|
+    it { should cover_query_with_indexes(columns) }
+  end
+
   {
     include_in_sitemap:       true,
     sitemap_change_frequency: 'monthly',
