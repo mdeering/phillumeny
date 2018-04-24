@@ -8,7 +8,7 @@ module Phillumeny
 
     MAJOR      = 0
     MINOR      = 2
-    PATCH      = 0
+    PATCH      = 1
     PRERELEASE = nil
     # PRERELEASE = 'alpha'.freeze
 

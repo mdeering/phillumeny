@@ -9,3 +9,10 @@ EmptyLinesAroundModuleBody:
 
 LineLength:
   Max: 125
+
+PredicateName:
+  Exclude:
+    - lib/phillumeny/active_record/have_default_value_of.rb
+
+SymbolArray:
+  Enabled: false
