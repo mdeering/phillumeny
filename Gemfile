@@ -2,7 +2,9 @@
 
 source 'https://rubygems.org'
 
-gem 'activemodel'
+gem 'activemodel',  require: false
+gem 'activerecord', require: false
+gem 'sqlite3',      require: false
 
 group :development do
   gem 'guard-rspec',   require: false
