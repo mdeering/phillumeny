@@ -12,7 +12,7 @@ LineLength:
 
 PredicateName:
   Exclude:
-    - lib/phillumeny/active_record.rb
+    - lib/phillumeny/active_record/have_default_value_of.rb
 
 SymbolArray:
   Enabled: false
