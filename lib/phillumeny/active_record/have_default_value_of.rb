@@ -31,7 +31,6 @@ module Phillumeny
 
       include Phillumeny::ActiveRecord::TableInformation
 
-      # @return [String]
       def description
         "have a default value of '#{default_value}':#{default_value.class} for #{attribute_name}"
       end
