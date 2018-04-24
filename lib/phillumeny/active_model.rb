@@ -2,7 +2,7 @@
 
 module Phillumeny
 
-  # Matchers  testing ActiveModel functionality
+  # Matchers for testing ActiveModel functionality
   module ActiveModel
 
     def validate_presence_of_any(*args)

@@ -21,3 +21,6 @@ ActiveRecord::Schema.define do
   end
 
 end
+
+class Post < ActiveRecord::Base
+end

@@ -3,6 +3,7 @@
 require 'phillumeny/version'
 
 require 'phillumeny/active_model'
+require 'phillumeny/active_record'
 require 'phillumeny/factory_bot'
 
 # Phillumeny is a collection of RSpec matchers for verbose testers that I use to fills some of the gaps

@@ -9,3 +9,7 @@ EmptyLinesAroundModuleBody:
 
 LineLength:
   Max: 125
+
+PredicateName:
+  Exclude:
+    - lib/phillumeny/active_record.rb
