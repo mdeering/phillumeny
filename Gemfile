@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 gem 'activemodel',  require: false
 gem 'activerecord', require: false
-gem 'sqlite3',      require: false
+gem 'sqlite3',      '~> 1.3.6', require: false
 
 group :development do
   gem 'guard-rspec',   require: false

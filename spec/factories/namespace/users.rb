@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory 'namespace/user' do
     trait :valid do
-      username 'anything'
+      username { 'anything' }
     end
   end
 end

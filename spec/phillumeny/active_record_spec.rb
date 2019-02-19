@@ -9,10 +9,10 @@ RSpec.describe Post, type: :model do
   end
 
   {
-    include_in_sitemap:       true,
+    include_in_sitemap: true,
     sitemap_change_frequency: 'monthly',
-    sitemap_priorty:          5,
-    title:                    nil
+    sitemap_priorty: 5,
+    title: nil
   }.each do |attribute, value|
     it { should have_default_value_of(value).for(attribute).in_the_database }
   end

@@ -72,6 +72,7 @@ module Phillumeny
 
       def column_configured_for_default_value?
         return true unless @check_column_default
+
         default_column_value == default_value
       end
 

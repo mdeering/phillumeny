@@ -37,7 +37,7 @@ module Phillumeny
 
       def matches?(subject)
         factory_name = @name = @name.nil? ? subject.class.to_s.underscore : @name
-        object = ::FactoryBot.build(factory_name, @trait)
+        object = ::FactoryBot.build(*[factory_name, @trait].compact)
         @error_messages = object.errors.full_messages unless object.valid?
         object.valid?
       end

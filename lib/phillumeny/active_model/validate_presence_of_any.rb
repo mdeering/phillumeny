@@ -191,6 +191,7 @@ module Phillumeny
       def store_initial_values
         attributes.each do |attribute|
           next if attribute_values.key?(attribute)
+
           attribute_values[attribute] = subject.send(attribute)
         end
       end

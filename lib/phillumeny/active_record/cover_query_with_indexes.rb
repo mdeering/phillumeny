@@ -38,6 +38,7 @@ module Phillumeny
 
       def failure_message
         return "No database column(s) found for #{invalid_columns.inspect}" unless valid_columns?
+
         "The table #{table_name} did not have index to cover queries for #{columns}"
       end
 
